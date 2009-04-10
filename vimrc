@@ -41,7 +41,7 @@ let g:rails_default_file='config/database.yml'
  
 set nocompatible          " We're running Vim, not Vi!
 if has("gui_running") 
-  set guifont=Consolas:h11
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ 8,Consolas:h11
   set guitablabel=%M%t
   "macmenu File.Close key=<nop>
   no <silent> <D-w> :bd<cr>
