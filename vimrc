@@ -155,7 +155,7 @@ set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 set ts=2  " Tabs are 2 spaces
 set bs=2  " Backspace over everything in insert mode
 set shiftwidth=2  " Tabs under smart indent
-set nocp incsearch
+set nocp incsearch "set incsearch in SHIN vimrc
 set cinoptions=:0,p0,t0
 set cinwords=if,else,while,do,for,switch,case
 set formatoptions=tcqr
@@ -339,3 +339,15 @@ let NERDShutUp=1 " no more f*cking 'unknown filetype' warnings!
 
 noremap <silent> <C-F11> :RN<CR>
 
+""""""""""""""""""
+""' SHINGARA PART
+""""""""""""""""""
+
+set ignorecase
+" Patter ignore when use the completion in search file
+set wig=*.o,*.obj,*~,#*#,*.pyc,*.tar*,*.avi,*.ogg,*.mp3
+set encoding=utf-8
+
+" Open a new tab with a Ctrl-T and save the current view before
+map <C-T> <Esc>:w!<CR>:tabnew<CR>:Explore<CR>
+imap <C-T> <Esc>:w!<CR>:tabnew<CR>:Explore<CR>
