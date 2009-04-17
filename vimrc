@@ -9,7 +9,7 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,perl,tex set shiftwidth=2
  
 autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
- 
+
 augroup filetypedetect
   au! BufNewFile,BufRead *.ch setf cheat
   au BufNewFile,BufRead *.liquid setf liquid
@@ -82,7 +82,7 @@ imap <M-Up> :tabn<CR>
 imap <M-Down> :tabp<CR>
 imap <c-s> <esc><c-s>
 
-colorscheme ir_black
+colorscheme delek
 
 syntax on                 " Enable syntax highlighting
 set visualbell
@@ -255,9 +255,11 @@ function! <SID>AvailableTemplates(lead, cmdline, cursorpos)
 endfunction
 
 " CTRL-R reloads the ~/.vimrc file
-nnoremap <C-R> :source ~/.vimrc
-inoremap <C-R> <C-O>:source ~/.vimrc
-vnoremap <C-R> <C-C>:source ~/.vimrc
+"nnoremap <C-R> :source ~/.vimrc
+"inoremap <C-R> <C-O>:source ~/.vimrc
+"vnoremap <C-R> <C-C>:source ~/.vimrc
+" CTRL-R need allways redo for me I don't really need source vimrc several
+" times
 
 " CTRL-T and CTRL-D indent and unindent blocks
 inoremap <C-D> <C-O><LT><LT>
@@ -351,3 +353,8 @@ set encoding=utf-8
 " Open a new tab with a Ctrl-T and save the current view before
 map <C-T> <Esc>:w!<CR>:tabnew<CR>:Explore<CR>
 imap <C-T> <Esc>:w!<CR>:tabnew<CR>:Explore<CR>
+
+" No save backup by .swp
+set nowb
+set noswapfile
+set noar
