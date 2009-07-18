@@ -146,7 +146,7 @@ set history=256  " Number of things to remember in history.
 set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nu  " Line numbers on
-set nowrap  " Line wrapping off
+"set nowrap  " Line wrapping off
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
  
 " Formatting (some of these are for coding in C and C++)
@@ -294,14 +294,6 @@ function! OpenRailsDoc(keyword)
   exec '!'.g:browser.' '.url
 endfunction
 noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
-
-" enable eclipse style moving of lines
-nmap <M-j> mz:m+<CR>`z==
-nmap <M-k> mz:m-2<CR>`z==
-imap <M-j> <Esc>:m+<CR>==gi
-imap <M-k> <Esc>:m-2<CR>==gi
-vmap <M-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 set hlsearch
 
