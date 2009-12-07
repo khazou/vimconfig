@@ -98,6 +98,8 @@ augroup myfiletypes
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 augroup END
 
+nmap <silent> <Leader>p :NERDTreeToggle<CR>
+
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
@@ -325,6 +327,9 @@ inoremap <silent> <Tab> <C-R>=CleverTab()<CR>
 " hitting enter with completion open selects the completion and closes preview
 "inoremap <silent> <expr> <CR> pumvisible() ? "\<C-Y>\<C-O>\<C-W>z" : "\<CR>"
 "inoremap <silent> <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+
+" NERD plugin config
+let NERDShutUp=1 " no more f*cking 'unknown filetype' warnings!
 
 noremap <silent> <C-F11> :RN<CR>
 
