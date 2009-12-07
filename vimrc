@@ -73,7 +73,7 @@ hi Comment gui=italic
 colorscheme dw_orange
 
 syntax on                 " Enable syntax highlighting
-set visualbell
+"set visualbell
 
 set nonumber
 
@@ -86,12 +86,18 @@ augroup END
 
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
 
-nmap <F2>     <Esc>:bp<CR>          " next buffer
-nmap <F3>     <Esc>:bn<CR>          " previous buffer
+nmap <F2>     <Esc>:bp<CR>              " next buffer
+nmap <F3>     <Esc>:bn<CR>              " previous buffer
 nmap <C-S-N>  <Esc>:tabnext<CR>
 nmap <C-S-P>  <Esc>:tabprev<CR>
 nmap <C-E>    <Esc>:NERDTreeToggle<CR>
 nmap <C-A>    <Esc>:TlistToggle<CR>
+
+"go to tag (:help tags)
+nmap <F5>     <C-]>
+
+"view list of tag can be go (:help tags)
+nmap <F6>     g]
 
 
 "map to bufexplorer
