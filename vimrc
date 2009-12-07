@@ -20,14 +20,11 @@ augroup END
 autocmd BufNewFile,BufRead *_test.rb source ~/.vim/ftplugin/shoulda.vim
 "use \rci in normal mode to indent ruby code,should install kode ,sudo gem
 "install kode
-nmap <leader>rci :%!ruby-code-indenter<cr>
  
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-" Load matchit (% to bounce from do to end, etc.)
-runtime! plugin/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 " Minibuffer Explorer Settings
@@ -87,8 +84,6 @@ colorscheme dw_orange
 syntax on                 " Enable syntax highlighting
 set visualbell
  
-" Load matchit (% to bounce from do to end, etc.)
-runtime! macros/matchit.vim
 set nonumber
  
 augroup myfiletypes
