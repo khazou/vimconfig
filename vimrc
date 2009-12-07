@@ -82,7 +82,7 @@ imap <M-Up> :tabn<CR>
 imap <M-Down> :tabp<CR>
 imap <c-s> <esc><c-s>
 
-colorscheme delek
+colorscheme dw_orange
 
 syntax on                 " Enable syntax highlighting
 set visualbell
@@ -345,3 +345,6 @@ imap <C-T> <Esc>:w!<CR>:tabnew<CR>:Explore<CR>
 set nowb
 set noswapfile
 set noar
+
+" Delete all whitespace in end of line
+autocmd BufWritePre * :%s/\s\+$//e
