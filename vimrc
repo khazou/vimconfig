@@ -7,7 +7,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,perl,tex set shiftwidth=2
- 
+
 autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
 
 augroup filetypedetect
@@ -16,28 +16,26 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.haml setfiletype haml
   autocmd BufNewFile,BufRead *.yml setf eruby
 augroup END
- 
+
 autocmd BufNewFile,BufRead *_test.rb source ~/.vim/ftplugin/shoulda.vim
-"use \rci in normal mode to indent ruby code,should install kode ,sudo gem
-"install kode
- 
+
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
+
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
- 
+
 " Change which file opens after executing :Rails command
 let g:rails_default_file='config/database.yml'
- 
+
 set nocompatible          " We're running Vim, not Vi!
-if has("gui_running") 
+if has("gui_running")
   set guifont=Bitstream\ Vera\ Sans\ Mono\ 8,Consolas:h11
   set guitablabel=%M%t
   "macmenu File.Close key=<nop>
@@ -72,20 +70,13 @@ set laststatus=2
 set vb t_vb=<CR>
 hi Comment gui=italic
 
-map <C-q> :mksession! ~/.vim/.session <cr>
-map <C-//> map ,# :s/^/#/<CR>
-map <S-//> :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR><Esc>:nohlsearch<CR>
-imap <M-Up> :tabn<CR>
-imap <M-Down> :tabp<CR>
-imap <c-s> <esc><c-s>
-
 colorscheme dw_orange
 
 syntax on                 " Enable syntax highlighting
 set visualbell
- 
+
 set nonumber
- 
+
 augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
@@ -95,9 +86,13 @@ augroup END
 
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
 
-"make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
+nmap <F2>     <Esc>:bp<CR>          " next buffer
+nmap <F3>     <Esc>:bn<CR>          " previous buffer
+nmap <C-S-N>  <Esc>:tabnext<CR>
+nmap <C-S-P>  <Esc>:tabprev<CR>
+nmap <C-E>    <Esc>:NERDTreeToggle<CR>
+nmap <C-A>    <Esc>:TlistToggle<CR>
+
 
 "map to bufexplorer
 nnoremap <C-B> :BufExplorer<cr>
@@ -107,9 +102,6 @@ nnoremap <c-f> :FuzzyFinderTextMate<CR>
 
 "map Q to something useful
 noremap Q gq
-
-"make Y consistent with C and D
-nnoremap Y y$
 
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
@@ -145,7 +137,7 @@ set ruler  " Ruler on
 set nu  " Line numbers on
 "set nowrap  " Line wrapping off
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
- 
+
 " Formatting (some of these are for coding in C and C++)
 set ts=2  " Tabs are 2 spaces
 set bs=2  " Backspace over everything in insert mode
@@ -162,7 +154,6 @@ set expandtab
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 " BEGIN rails-toolkit settings
 runtime debian.vim
 runtime macros/rails-toolkit.vim
@@ -177,7 +168,7 @@ set lcs=tab:\ \ ,extends:>,precedes:<
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
- 
+
 " gvim specific
 set mousehide  " Hide mouse after chars typed
 "set mouse=a  " Mouse in all modes
@@ -249,22 +240,6 @@ function! <SID>AvailableTemplates(lead, cmdline, cursorpos)
     return map(files, 'strpart(v:val,strlen(templateDir))')
 endfunction
 
-" CTRL-R reloads the ~/.vimrc file
-"nnoremap <C-R> :source ~/.vimrc
-"inoremap <C-R> <C-O>:source ~/.vimrc
-"vnoremap <C-R> <C-C>:source ~/.vimrc
-" CTRL-R need allways redo for me I don't really need source vimrc several
-" times
-
-" CTRL-T and CTRL-D indent and unindent blocks
-inoremap <C-D> <C-O><LT><LT>
-nnoremap <C-D> <LT><LT>
-vnoremap <C-T> >
-vnoremap <C-D> <LT>
-
-" CTRL-Z undoes even in visual/selection mode
-vnoremap <C-Z> <C-C>
-
 " Run Rspec for the current spec file
 function! RunRspec()
 ruby << EOF
@@ -277,12 +252,12 @@ EOF
 endfunction
 map <F7> :call RunRspec()<cr>
 
-let g:browser = 'open '     
+let g:browser = 'open '
 " Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
 function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
   exec '!'.g:browser.' '.url
-endfunction           
+endfunction
 noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
 
 " Open the Rails ApiDock page for the word under cursos, in a new Firefox tab
@@ -303,25 +278,6 @@ command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent
 
 " use osx 'open' to open urls
 command! -bar -nargs=1 OpenURL :!open <args>
-
-" http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
-function! CleverTab()
-  if pumvisible()
-    return "\<C-N>"
-  endif
-  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-  elseif exists('&omnifunc') && &omnifunc != ''
-    return "\<C-X>\<C-O>"
-  else
-    return "\<C-N>"
-  endif
-endfunction
-inoremap <silent> <Tab> <C-R>=CleverTab()<CR>
-
-" hitting enter with completion open selects the completion and closes preview
-"inoremap <silent> <expr> <CR> pumvisible() ? "\<C-Y>\<C-O>\<C-W>z" : "\<CR>"
-"inoremap <silent> <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " NERD plugin config
 let NERDShutUp=1 " no more f*cking 'unknown filetype' warnings!
@@ -348,3 +304,6 @@ set noar
 
 " Delete all whitespace in end of line
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Define the ctags command
+let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
