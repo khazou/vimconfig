@@ -312,4 +312,6 @@ set noar
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Define the ctags command
-let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+let Tlist_GainFocus_On_ToggleOpenl=1
+
